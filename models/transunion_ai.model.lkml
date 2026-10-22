@@ -60,3 +60,6 @@ explore: scrunch_citations {
 explore: ai_platform_suggest { view_name: dim_ai_platform hidden: yes }
 explore: suggest_ga4         { view_name: ga4_daily hidden: yes }
 explore: suggest_scrunch     { view_name: scrunch_response hidden: yes }
+
+# Hero banners for the dashboard tabs (hidden)
+explore: ui_banner { hidden: yes }

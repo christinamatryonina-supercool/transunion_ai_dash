@@ -138,7 +138,28 @@ view: ga4_daily {
   measure: visits_dss { group_label: "Conversions" label: "DSS Events" description: "PROVISIONAL Visits_DSS = DSS_* key events" type: sum sql: IFF(${is_cp} AND ${TABLE}.CONVERSION_PRODUCT_GROUP = 'DSS', ${TABLE}.KEY_EVENTS, NULL) ;; value_format_name: decimal_0 }
   measure: visits_acr { group_label: "Conversions" label: "ACR Events" description: "PROVISIONAL Visits_ACR = FactAct_* key events" type: sum sql: IFF(${is_cp} AND ${TABLE}.CONVERSION_PRODUCT_GROUP = 'FactAct', ${TABLE}.KEY_EVENTS, NULL) ;; value_format_name: decimal_0 }
 
-  measure: conversion_rate    { group_label: "Conversions" label: "Conversion Rate" description: "Business conversions / sessions" type: number sql: ${business_conversions} / NULLIF(${sessions}, 0) ;; value_format_name: percent_2 }
-  measure: conversion_rate_pp { group_label: "Conversions · PP" label: "Conversion Rate (PP)" type: number sql: ${business_conversions_pp} / NULLIF(${sessions_pp}, 0) ;; value_format_name: percent_2 }
-  measure: signup_rate        { group_label: "Conversions" label: "Signup Rate" type: number sql: ${signups} / NULLIF(${sessions}, 0) ;; value_format_name: percent_2 }
+  measure: conversion_rate    { group_label: "Conversions" label: "Key Events / Session" description: "Business key events per session (a session can fire several)" type: number sql: ${business_conversions} / NULLIF(${sessions}, 0) ;; value_format_name: decimal_2 }
+  measure: conversion_rate_pp { group_label: "Conversions · PP" label: "Key Events / Session (PP)" type: number sql: ${business_conversions_pp} / NULLIF(${sessions_pp}, 0) ;; value_format_name: decimal_2 }
+
+  # True session conversion rate: sessions with a signup event / sessions
+  # (SESSIONS_WITH_EVENT summed over the Signups events; a session firing two different
+  #  signup events counts twice - negligible, but a ceiling rather than an exact value)
+  measure: signup_sessions    { hidden: yes type: sum sql: IFF(${is_cp} AND ${TABLE}.CONVERSION_DASHBOARD_COLUMN = 'Signups', ${TABLE}.SESSIONS_WITH_EVENT, NULL) ;; }
+  measure: signup_sessions_pp { hidden: yes type: sum sql: IFF(${is_pp} AND ${TABLE}.CONVERSION_DASHBOARD_COLUMN = 'Signups', ${TABLE}.SESSIONS_WITH_EVENT, NULL) ;; }
+  measure: signup_session_rate {
+    group_label: "Conversions"
+    label: "Signup Rate"
+    description: "Sessions with a signup / sessions"
+    type: number
+    sql: ${signup_sessions} / NULLIF(${sessions}, 0) ;;
+    value_format_name: percent_2
+  }
+  measure: signup_session_rate_pp {
+    group_label: "Conversions · PP"
+    label: "Signup Rate (PP)"
+    type: number
+    sql: ${signup_sessions_pp} / NULLIF(${sessions_pp}, 0) ;;
+    value_format_name: percent_2
+  }
+  measure: signup_rate        { group_label: "Conversions" label: "Signups / Session" description: "Signup events per session" type: number sql: ${signups} / NULLIF(${sessions}, 0) ;; value_format_name: decimal_2 }
 }

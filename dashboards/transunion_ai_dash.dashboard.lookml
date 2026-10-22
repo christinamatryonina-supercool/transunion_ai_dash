@@ -97,25 +97,21 @@
     explore: scrunch_responses
     field: scrunch_response.sentiment_none_mode
   elements:
-  - name: exec_logo
-    type: text
-    title_text: ''
-    body_text: '![TransUnion](https://ml.globenewswire.com/Resource/Download/2b06d0f7-df02-4246-8367-417848756c77)'
+  - name: exec_banner
+    title: ''
+    model: transunion_ai
+    explore: ui_banner
+    type: single_value
+    fields:
+    - ui_banner.header_exec
+    show_single_value_title: false
+    show_comparison: false
+    listen: {}
     tab_name: Executive Summary
     row: 0
     col: 0
-    width: 4
-    height: 2
-  - name: exec_header
-    type: text
-    title_text: AI Search & GEO Performance
-    subtitle_text: Executive Summary · TransUnion visibility in AI answers vs competitors, and the traffic it drives
-    body_text: ''
-    tab_name: Executive Summary
-    row: 0
-    col: 4
-    width: 20
-    height: 2
+    width: 24
+    height: 3
   - name: exec_kpi_sov
     title: Share of Voice
     model: transunion_ai
@@ -142,7 +138,7 @@
       Persona (Scrunch): scrunch_brand.persona_name
       Topic (Scrunch): scrunch_brand.primary_topic
     tab_name: Executive Summary
-    row: 2
+    row: 3
     col: 0
     width: 4
     height: 4
@@ -169,7 +165,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
-    row: 2
+    row: 3
     col: 4
     width: 4
     height: 4
@@ -199,7 +195,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
-    row: 2
+    row: 3
     col: 8
     width: 4
     height: 4
@@ -229,7 +225,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
-    row: 2
+    row: 3
     col: 12
     width: 4
     height: 4
@@ -257,7 +253,7 @@
       Topic (Scrunch): scrunch_response.primary_topic
       'Sentiment: ''none''': scrunch_response.sentiment_none_mode
     tab_name: Executive Summary
-    row: 2
+    row: 3
     col: 16
     width: 4
     height: 4
@@ -286,7 +282,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: Executive Summary
-    row: 2
+    row: 3
     col: 20
     width: 4
     height: 4
@@ -314,7 +310,7 @@
       Market: ga4_daily.country
       Device (GA4): ga4_daily.device_category
     tab_name: Executive Summary
-    row: 6
+    row: 7
     col: 0
     width: 6
     height: 3
@@ -342,18 +338,18 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: Executive Summary
-    row: 6
+    row: 7
     col: 6
     width: 6
     height: 3
   - name: exec_kpi_ai_conv
-    title: AI Conversion Rate
+    title: AI Signup Rate
     model: transunion_ai
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.conversion_rate
-    - ga4_daily.conversion_rate_pp
+    - ga4_daily.signup_session_rate
+    - ga4_daily.signup_session_rate_pp
     custom_color_enabled: true
     custom_color: '#00A6CA'
     show_single_value_title: true
@@ -363,13 +359,16 @@
     show_comparison_label: true
     comparison_label: vs PP
     filters: *id002
+    note_state: collapsed
+    note_display: hover
+    note_text: Sessions with a signup / AI sessions
     listen:
       Date Range: ga4_daily.period
       Market: ga4_daily.country
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: Executive Summary
-    row: 6
+    row: 7
     col: 12
     width: 6
     height: 3
@@ -396,7 +395,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: Executive Summary
-    row: 6
+    row: 7
     col: 18
     width: 6
     height: 3
@@ -446,7 +445,7 @@
       Persona (Scrunch): scrunch_brand.persona_name
       Topic (Scrunch): scrunch_brand.primary_topic
     tab_name: Executive Summary
-    row: 9
+    row: 14
     col: 0
     width: 16
     height: 8
@@ -494,7 +493,7 @@
       Persona (Scrunch): scrunch_brand.persona_name
       Topic (Scrunch): scrunch_brand.primary_topic
     tab_name: Executive Summary
-    row: 9
+    row: 14
     col: 16
     width: 8
     height: 8
@@ -528,7 +527,7 @@
       Persona (Scrunch): scrunch_citation.persona_name
       Topic (Scrunch): scrunch_citation.primary_topic
     tab_name: Executive Summary
-    row: 17
+    row: 22
     col: 0
     width: 14
     height: 8
@@ -561,7 +560,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
-    row: 17
+    row: 22
     col: 14
     width: 10
     height: 8
@@ -570,29 +569,25 @@
     title_text: ''
     body_text: '<sub>**vs PP** = change vs previous period of the same length · Brand = named in the AI answer, Citation = linked source · First-Mention = top part of the answer · AI sessions are a floor: Google AI Overviews / AI Mode arrive as google / organic</sub>'
     tab_name: Executive Summary
-    row: 25
+    row: 30
     col: 0
     width: 24
     height: 2
-  - name: traffic_logo
-    type: text
-    title_text: ''
-    body_text: '![TransUnion](https://ml.globenewswire.com/Resource/Download/2b06d0f7-df02-4246-8367-417848756c77)'
+  - name: traffic_banner
+    title: ''
+    model: transunion_ai
+    explore: ui_banner
+    type: single_value
+    fields:
+    - ui_banner.header_traffic
+    show_single_value_title: false
+    show_comparison: false
+    listen: {}
     tab_name: AI Traffic & Conversions
     row: 0
     col: 0
-    width: 4
-    height: 2
-  - name: traffic_header
-    type: text
-    title_text: AI Search & GEO Performance
-    subtitle_text: AI Referral Traffic & Conversions · GA4 · every filter applies to sessions and conversions
-    body_text: ''
-    tab_name: AI Traffic & Conversions
-    row: 0
-    col: 4
-    width: 20
-    height: 2
+    width: 24
+    height: 3
   - name: traffic_kpi_sessions
     title: AI Sessions
     model: transunion_ai
@@ -615,7 +610,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 2
+    row: 3
     col: 0
     width: 4
     height: 4
@@ -643,7 +638,7 @@
       Market: ga4_daily.country
       Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
-    row: 2
+    row: 3
     col: 4
     width: 4
     height: 4
@@ -670,7 +665,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 2
+    row: 3
     col: 8
     width: 4
     height: 4
@@ -697,7 +692,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 2
+    row: 3
     col: 12
     width: 4
     height: 4
@@ -724,7 +719,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 2
+    row: 3
     col: 16
     width: 4
     height: 4
@@ -751,7 +746,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 2
+    row: 3
     col: 20
     width: 4
     height: 4
@@ -795,7 +790,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 6
+    row: 7
     col: 0
     width: 24
     height: 8
@@ -841,7 +836,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 14
+    row: 15
     col: 0
     width: 12
     height: 8
@@ -883,7 +878,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 14
+    row: 15
     col: 12
     width: 12
     height: 8
@@ -913,38 +908,46 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 22
+    row: 23
     col: 0
     width: 8
     height: 8
   - name: traffic_map
-    title: AI Sessions by Market
+    title: AI Sessions by Market · Americas
     model: transunion_ai
     explore: ga4_ai_traffic
-    type: looker_geo_choropleth
+    type: looker_map
     fields:
     - ga4_daily.country
     - ga4_daily.ai_sessions
     show_view_names: false
     sorts:
     - ga4_daily.ai_sessions desc
-    map: world
-    map_projection: ''
-    quantize_colors: false
-    colors:
-    - '#E6F6FA'
+    map_plot_mode: points
+    map_position: custom
+    map_latitude: 18
+    map_longitude: -88
+    map_zoom: 2
+    map_tile_provider: light
+    map_pannable: true
+    map_zoomable: true
+    map_scale_indicator: 'off'
+    map_marker_type: circle
+    map_marker_radius_mode: proportional_value
+    map_marker_color_mode: value
+    map_value_colors:
+    - '#7FD3E6'
     - '#00A6CA'
     - '#0B2E4F'
-    outer_border_color: '#FFFFFF'
-    inner_border_color: '#FFFFFF'
-    empty_color: '#F2F4F7'
+    show_legend: true
+    quantize_map_value_colors: false
     listen:
       Date Range: ga4_daily.period
       Market: ga4_daily.country
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 22
+    row: 23
     col: 8
     width: 16
     height: 8
@@ -957,7 +960,7 @@
     - ga4_daily.ai_platform
     - ga4_daily.sessions
     - ga4_daily.signups
-    - ga4_daily.signup_rate
+    - ga4_daily.signup_session_rate
     - ga4_daily.visits_dss
     - ga4_daily.visits_acr
     - ga4_daily.business_conversions
@@ -982,7 +985,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 30
+    row: 31
     col: 0
     width: 16
     height: 8
@@ -1016,7 +1019,7 @@
       Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
     tab_name: AI Traffic & Conversions
-    row: 30
+    row: 31
     col: 16
     width: 8
     height: 8
@@ -1025,29 +1028,25 @@
     title_text: ''
     body_text: '<sub>**vs PP** = change vs previous period of the same length · All AI sources included (Top 5 flag optional) · Date, AI Engine, Market and Device filter sessions AND conversions · AI sessions are a floor: Google AI Overviews / AI Mode arrive as google / organic, app traffic without referrer as direct</sub>'
     tab_name: AI Traffic & Conversions
-    row: 38
+    row: 39
     col: 0
     width: 24
     height: 2
-  - name: prompts_logo
-    type: text
-    title_text: ''
-    body_text: '![TransUnion](https://ml.globenewswire.com/Resource/Download/2b06d0f7-df02-4246-8367-417848756c77)'
+  - name: prompts_banner
+    title: ''
+    model: transunion_ai
+    explore: ui_banner
+    type: single_value
+    fields:
+    - ui_banner.header_prompts
+    show_single_value_title: false
+    show_comparison: false
+    listen: {}
     tab_name: Prompt & Persona Intelligence
     row: 0
     col: 0
-    width: 4
-    height: 2
-  - name: prompts_header
-    type: text
-    title_text: AI Search & GEO Performance
-    subtitle_text: Prompt & Persona Intelligence · Scrunch · how AI engines answer consumer questions
-    body_text: ''
-    tab_name: Prompt & Persona Intelligence
-    row: 0
-    col: 4
-    width: 20
-    height: 2
+    width: 24
+    height: 3
   - name: prompts_kpi_prompts
     title: Prompts Tracked
     model: transunion_ai
@@ -1065,7 +1064,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
-    row: 2
+    row: 3
     col: 0
     width: 6
     height: 3
@@ -1086,7 +1085,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
-    row: 2
+    row: 3
     col: 6
     width: 6
     height: 3
@@ -1107,7 +1106,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
-    row: 2
+    row: 3
     col: 12
     width: 6
     height: 3
@@ -1135,7 +1134,7 @@
       Topic (Scrunch): scrunch_response.primary_topic
       'Sentiment: ''none''': scrunch_response.sentiment_none_mode
     tab_name: Prompt & Persona Intelligence
-    row: 2
+    row: 3
     col: 18
     width: 6
     height: 3
@@ -1176,7 +1175,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
-    row: 5
+    row: 6
     col: 0
     width: 24
     height: 10
@@ -1226,7 +1225,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
-    row: 15
+    row: 16
     col: 0
     width: 16
     height: 9
@@ -1257,7 +1256,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
-    row: 15
+    row: 16
     col: 16
     width: 8
     height: 9
@@ -1266,7 +1265,76 @@
     title_text: ''
     body_text: <sub>**Cited** = transunion.com linked as a source · **Mentioned** = named in the answer · **Missing** = neither · Winner domain = most-linked domain per answer</sub>
     tab_name: Prompt & Persona Intelligence
-    row: 24
+    row: 25
     col: 0
     width: 24
     height: 2
+  - name: exec_pulse_mentions
+    title: TU Mention Rate · daily
+    model: transunion_ai
+    explore: scrunch_responses
+    type: looker_area
+    fields:
+    - scrunch_response.report_date
+    - scrunch_response.mention_rate
+    show_view_names: false
+    fill_fields:
+    - scrunch_response.report_date
+    filters:
+      scrunch_response.period_type: CP
+    sorts:
+    - scrunch_response.report_date
+    interpolation: monotone
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_x_axis_label: false
+    show_y_axis_labels: false
+    show_y_axis_ticks: false
+    legend_position: none
+    series_colors:
+      scrunch_response.mention_rate: '#00A6CA'
+    listen:
+      Date Range: scrunch_response.period
+      AI Engine: scrunch_response.ai_platform
+      Market: scrunch_response.country
+      Persona (Scrunch): scrunch_response.persona_name
+      Topic (Scrunch): scrunch_response.primary_topic
+    tab_name: Executive Summary
+    row: 10
+    col: 0
+    width: 12
+    height: 4
+  - name: exec_pulse_ai
+    title: AI Sessions · daily
+    model: transunion_ai
+    explore: ga4_ai_traffic
+    type: looker_area
+    fields:
+    - ga4_daily.report_date
+    - ga4_daily.ai_sessions
+    show_view_names: false
+    fill_fields:
+    - ga4_daily.report_date
+    filters:
+      ga4_daily.period_type: CP
+    sorts:
+    - ga4_daily.report_date
+    interpolation: monotone
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_x_axis_label: false
+    show_y_axis_labels: false
+    show_y_axis_ticks: false
+    legend_position: none
+    series_colors:
+      ga4_daily.ai_sessions: '#0B2E4F'
+    listen:
+      Date Range: ga4_daily.period
+      Market: ga4_daily.country
+      Device (GA4): ga4_daily.device_category
+      AI Engine: ga4_daily.ai_platform
+    tab_name: Executive Summary
+    row: 10
+    col: 12
+    width: 12
+    height: 4
