@@ -1,7 +1,8 @@
 # =============================================================================
 
 # GA4 daily - DWH.DBO."TransUnion_GA4_Daily_Dynamic_Table"
-# - ROW_TYPE sessions | events, same dimensions -> Date, AI Engine, Market, Device cut everything
+# - ROW_TYPE sessions | events (device, country) and geo (region, calibrated sessions)
+#   Date + AI Engine cut everything; Device cuts sessions/events; Region cuts geo
 # - Measures = current period (CP); *_pp = previous period of the same length
 # - Totals: explore ga4_ai_traffic (sites only). Products: explore ga4_products (subproperties)
 # =============================================================================
@@ -74,9 +75,23 @@ view: ga4_daily {
   dimension: is_ai_referral      { group_label: "AI" label: "Is AI Referral" type: yesno sql: ${TABLE}.IS_AI_REFERRAL ;; }
   dimension: is_top5_ai_platform { group_label: "AI" label: "Is Top 5 AI Engine" type: yesno sql: ${TABLE}.IS_TOP5_AI_PLATFORM ;; }
 
-  dimension: device_category { group_label: "Audience" label: "Device" sql: ${TABLE}.DEVICE_CATEGORY ;; }
-  dimension: country         { group_label: "Audience" label: "Country" map_layer_name: countries sql: ${TABLE}.COUNTRY ;; }
-  dimension: region { hidden: yes group_label: "Audience" label: "Region" description: "Not available yet (NULL) - country only" sql: ${TABLE}.REGION ;; }
+  dimension: device_category { group_label: "Audience" label: "Device" description: "Sessions and events rows (not geo)" sql: ${TABLE}.DEVICE_CATEGORY ;; }
+  dimension: country         { group_label: "Audience" label: "Country" sql: ${TABLE}.COUNTRY ;; }
+  dimension: region {
+    hidden: yes
+    group_label: "Audience"
+    label: "Region (raw)"
+    description: "GA4 region, worldwide (geo rows only)"
+    sql: ${TABLE}.REGION ;;
+  }
+
+  dimension: us_state {
+    group_label: "Audience"
+    label: "US State"
+    description: "GA4 region limited to the 50 US states + DC (geo rows only); other regions = NULL"
+    map_layer_name: us_states
+    sql: CASE WHEN ${TABLE}.REGION IN ('Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming') THEN ${TABLE}.REGION END ;;
+  }
 
   dimension: event_name                  { group_label: "Conversion" label: "Key Event" sql: ${TABLE}.EVENT_NAME ;; }
   dimension: conversion_product_group    { group_label: "Conversion" label: "Product Group" sql: ${TABLE}.CONVERSION_PRODUCT_GROUP ;; }
@@ -162,4 +177,18 @@ view: ga4_daily {
     value_format_name: percent_2
   }
   measure: signup_rate        { group_label: "Conversions" label: "Signups / Session" description: "Signup events per session" type: number sql: ${signups} / NULLIF(${sessions}, 0) ;; value_format_name: decimal_2 }
+
+  # ---------------- Geo (ROW_TYPE geo; sessions calibrated to the main table) ----------------
+  measure: geo_sessions    { group_label: "Geo" label: "Sessions (geo)" description: "Calibrated: regions add up to the Sessions KPI" type: sum sql: IFF(${is_cp}, ${TABLE}.GEO_SESSIONS, NULL) ;; value_format_name: decimal_0 }
+  measure: geo_ai_sessions { group_label: "Geo" label: "AI Sessions (geo)" type: sum sql: IFF(${is_cp} AND ${TABLE}.IS_AI_REFERRAL, ${TABLE}.GEO_SESSIONS, NULL) ;; value_format_name: decimal_0 }
+  measure: geo_ai_share {
+    group_label: "Geo"
+    label: "AI Share of Traffic (geo)"
+    type: number
+    sql: ${geo_ai_sessions} / NULLIF(${geo_sessions}, 0) ;;
+    value_format_name: percent_2
+  }
+  measure: geo_key_events    { group_label: "Geo" label: "Key Events (geo)" type: sum sql: IFF(${is_cp}, ${TABLE}.GEO_KEY_EVENTS, NULL) ;; value_format_name: decimal_0 }
+  measure: geo_ai_key_events { group_label: "Geo" label: "AI Key Events (geo)" type: sum sql: IFF(${is_cp} AND ${TABLE}.IS_AI_REFERRAL, ${TABLE}.GEO_KEY_EVENTS, NULL) ;; value_format_name: decimal_0 }
+  measure: geo_ai_revenue    { group_label: "Geo" label: "AI Revenue (geo)" type: sum sql: IFF(${is_cp} AND ${TABLE}.IS_AI_REFERRAL, ${TABLE}.GEO_REVENUE, NULL) ;; value_format_name: usd_0 }
 }

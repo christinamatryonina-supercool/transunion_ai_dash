@@ -42,8 +42,8 @@
     model: transunion_ai
     explore: ai_platform_suggest
     field: dim_ai_platform.ai_platform
-  - name: Market
-    title: Market
+  - name: US State
+    title: US State
     type: field_filter
     default_value: ''
     allow_multiple_values: true
@@ -51,7 +51,7 @@
     ui_config: *id001
     model: transunion_ai
     explore: suggest_ga4
-    field: ga4_daily.country
+    field: ga4_daily.us_state
   - name: Device (GA4)
     title: Device (GA4)
     type: field_filter
@@ -134,7 +134,6 @@
     listen:
       Date Range: scrunch_brand.period
       AI Engine: scrunch_brand.ai_platform
-      Market: scrunch_brand.country
       Persona (Scrunch): scrunch_brand.persona_name
       Topic (Scrunch): scrunch_brand.primary_topic
     tab_name: Executive Summary
@@ -161,7 +160,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
@@ -191,7 +189,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
@@ -221,7 +218,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
@@ -248,7 +244,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
       'Sentiment: ''none''': scrunch_response.sentiment_none_mode
@@ -278,9 +273,8 @@
     note_text: GA4 sessions from all AI sources
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: Executive Summary
     row: 4
     col: 20
@@ -307,7 +301,6 @@
     note_text: AI sessions / all sessions (ignores the AI Engine filter)
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
       Device (GA4): ga4_daily.device_category
     tab_name: Executive Summary
     row: 8
@@ -334,9 +327,8 @@
       ga4_daily.is_ai_referral: 'Yes'
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: Executive Summary
     row: 8
     col: 6
@@ -364,9 +356,8 @@
     note_text: Sessions with a signup / AI sessions
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: Executive Summary
     row: 8
     col: 12
@@ -391,9 +382,8 @@
     filters: *id002
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: Executive Summary
     row: 8
     col: 18
@@ -441,7 +431,6 @@
     listen:
       Date Range: scrunch_brand.period
       AI Engine: scrunch_brand.ai_platform
-      Market: scrunch_brand.country
       Persona (Scrunch): scrunch_brand.persona_name
       Topic (Scrunch): scrunch_brand.primary_topic
     tab_name: Executive Summary
@@ -489,7 +478,6 @@
     listen:
       Date Range: scrunch_brand.period
       AI Engine: scrunch_brand.ai_platform
-      Market: scrunch_brand.country
       Persona (Scrunch): scrunch_brand.persona_name
       Topic (Scrunch): scrunch_brand.primary_topic
     tab_name: Executive Summary
@@ -523,7 +511,6 @@
     listen:
       Date Range: scrunch_citation.period
       AI Engine: scrunch_citation.ai_platform
-      Market: scrunch_citation.country
       Persona (Scrunch): scrunch_citation.persona_name
       Topic (Scrunch): scrunch_citation.primary_topic
     tab_name: Executive Summary
@@ -556,7 +543,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
@@ -606,9 +592,8 @@
     comparison_label: vs PP
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 4
     col: 0
@@ -635,7 +620,6 @@
     note_text: AI sessions / all sessions (ignores the AI Engine filter)
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
       Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 4
@@ -661,9 +645,8 @@
     filters: *id002
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 4
     col: 8
@@ -688,9 +671,8 @@
     filters: *id002
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 4
     col: 12
@@ -715,9 +697,8 @@
     filters: *id002
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 4
     col: 16
@@ -742,9 +723,8 @@
     filters: *id002
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 4
     col: 20
@@ -786,9 +766,8 @@
       Other AI Assistant - ga4_daily.sessions: '#98A2B3'
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 8
     col: 0
@@ -832,9 +811,8 @@
     show_value_labels: false
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 16
     col: 0
@@ -874,9 +852,8 @@
       ga4_daily.sessions: *id003
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 16
     col: 12
@@ -904,52 +881,86 @@
       Unknown: '#D0D5DD'
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 24
     col: 0
-    width: 8
+    width: 6
     height: 8
   - name: traffic_map
-    title: AI Sessions by Market · Americas
+    title: AI Sessions by US State
     model: transunion_ai
     explore: ga4_ai_traffic
-    type: looker_map
+    type: looker_geo_choropleth
     fields:
-    - ga4_daily.country
-    - ga4_daily.ai_sessions
+    - ga4_daily.us_state
+    - ga4_daily.geo_ai_sessions
     show_view_names: false
+    filters:
+      ga4_daily.us_state: -NULL
     sorts:
-    - ga4_daily.ai_sessions desc
-    map_plot_mode: points
-    map_position: custom
-    map_latitude: 18
-    map_longitude: -88
-    map_zoom: 2
-    map_tile_provider: light
-    map_pannable: true
-    map_zoomable: true
-    map_scale_indicator: 'off'
-    map_marker_type: circle
-    map_marker_radius_mode: proportional_value
-    map_marker_color_mode: value
-    map_value_colors:
-    - '#7FD3E6'
+    - ga4_daily.geo_ai_sessions desc
+    map: usa
+    map_projection: ''
+    quantize_colors: true
+    colors:
+    - '#E6F6FA'
+    - '#9ADCEC'
     - '#00A6CA'
+    - '#0A6E95'
     - '#0B2E4F'
-    show_legend: true
-    quantize_map_value_colors: false
+    outer_border_color: '#FFFFFF'
+    outer_border_width: 1.5
+    inner_border_color: '#FFFFFF'
+    inner_border_width: 1
+    empty_color: '#EEF2F6'
+    note_state: collapsed
+    note_display: hover
+    note_text: GA4 region x AI source, calibrated to total sessions · darker = more AI sessions
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      US State: ga4_daily.us_state
     tab_name: AI Traffic & Conversions
     row: 24
-    col: 8
-    width: 16
+    col: 6
+    width: 10
+    height: 8
+  - name: traffic_states
+    title: Top States · AI Traffic
+    model: transunion_ai
+    explore: ga4_ai_traffic
+    type: looker_grid
+    fields:
+    - ga4_daily.us_state
+    - ga4_daily.geo_ai_sessions
+    - ga4_daily.geo_ai_share
+    - ga4_daily.geo_ai_key_events
+    show_view_names: false
+    filters:
+      ga4_daily.us_state: -NULL
+    sorts:
+    - ga4_daily.geo_ai_sessions desc
+    limit: 15
+    show_row_numbers: true
+    table_theme: white
+    header_text_alignment: left
+    series_labels:
+      ga4_daily.us_state: State
+      ga4_daily.geo_ai_sessions: AI Sessions
+      ga4_daily.geo_ai_share: AI Share
+      ga4_daily.geo_ai_key_events: AI Key Events
+    series_cell_visualizations:
+      ga4_daily.geo_ai_sessions: *id003
+    listen:
+      Date Range: ga4_daily.period
+      AI Engine: ga4_daily.ai_platform
+      US State: ga4_daily.us_state
+    tab_name: AI Traffic & Conversions
+    row: 24
+    col: 16
+    width: 8
     height: 8
   - name: traffic_conversions
     title: Downstream Conversions by AI Engine
@@ -981,9 +992,8 @@
     note_text: DSS / ACR provisional until TU confirms Visits_DSS / ACR / Phx
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 32
     col: 0
@@ -1015,9 +1025,8 @@
     note_text: GA4 subproperties (DSS, ACR, B2B...) - subsets of GA4 US, never added to totals
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: AI Traffic & Conversions
     row: 32
     col: 16
@@ -1026,7 +1035,7 @@
   - name: traffic_footnote
     type: text
     title_text: ''
-    body_text: '<sub>**vs PP** = change vs previous period of the same length · All AI sources included (Top 5 flag optional) · Date, AI Engine, Market and Device filter sessions AND conversions · AI sessions are a floor: Google AI Overviews / AI Mode arrive as google / organic, app traffic without referrer as direct</sub>'
+    body_text: '<sub>**vs PP** = change vs previous period of the same length · All AI sources included (Top 5 flag optional) · Date and AI Engine filter everything; Device filters sessions and conversions; US State filters the state map and table (calibrated to total sessions) · AI sessions are a floor: Google AI Overviews / AI Mode arrive as google / organic, app traffic without referrer as direct</sub>'
     tab_name: AI Traffic & Conversions
     row: 40
     col: 0
@@ -1060,7 +1069,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
@@ -1081,7 +1089,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
@@ -1102,7 +1109,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
@@ -1129,7 +1135,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
       'Sentiment: ''none''': scrunch_response.sentiment_none_mode
@@ -1171,7 +1176,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
@@ -1221,7 +1225,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
@@ -1252,7 +1255,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
@@ -1296,7 +1298,6 @@
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
-      Market: scrunch_response.country
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
@@ -1330,9 +1331,8 @@
       ga4_daily.ai_sessions: '#0B2E4F'
     listen:
       Date Range: ga4_daily.period
-      Market: ga4_daily.country
-      Device (GA4): ga4_daily.device_category
       AI Engine: ga4_daily.ai_platform
+      Device (GA4): ga4_daily.device_category
     tab_name: Executive Summary
     row: 11
     col: 12
