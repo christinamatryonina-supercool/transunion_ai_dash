@@ -1,8 +1,9 @@
 # =============================================================================
 
-# UI banner - hero header per dashboard tab (HTML rendered in a single-value tile)
-# - One-row derived table, no warehouse cost worth mentioning
-# - Logo: change LOGO_URL below in all three measures (host a transparent PNG/SVG for best result)
+# UI banner - hero header per dashboard tab (HTML in a single-value tile)
+# - TransUnion palette: navy #0A4A6E, teal #00A6CA, yellow #FFE600
+# - Wordmark built in HTML (no image): crisp, cannot break or be cropped
+# - Simple CSS only (no flexbox) - Looker strips some layout CSS in tiles
 # =============================================================================
 
 view: ui_banner {
@@ -15,57 +16,47 @@ view: ui_banner {
     type: max
     sql: ${TABLE}.id ;;
     html:
-      <div style="width:100%;box-sizing:border-box;border-radius:18px;padding:20px 28px;background:linear-gradient(115deg,#071E36 0%,#0B2E4F 45%,#00A6CA 100%);display:flex;align-items:center;gap:24px;text-align:left;font-family:Inter,Roboto,Arial,sans-serif;box-shadow:0 8px 24px rgba(11,46,79,.25);">
-        <img src="https://ml.globenewswire.com/Resource/Download/2b06d0f7-df02-4246-8367-417848756c77" style="height:58px;max-width:170px;object-fit:contain;border-radius:12px;background:#FFFFFF;padding:6px 12px;">
-        <div style="flex:1;">
-          <div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#7FD3E6;font-weight:700;">TransUnion · AI Search &amp; GEO</div>
-          <div style="font-size:28px;line-height:1.15;font-weight:700;color:#FFFFFF;margin-top:4px;">Executive Summary</div>
-          <div style="font-size:13px;color:#CFEAF2;margin-top:6px;">How visible TransUnion is inside AI answers vs competitors, and the traffic, signups and revenue it drives.</div>
+      <div style="width:100%;box-sizing:border-box;border-radius:16px;padding:18px 28px 16px 28px;background:linear-gradient(115deg,#033E5E 0%,#0A4A6E 45%,#00A6CA 100%);text-align:left;font-family:Roboto,Arial,sans-serif;">
+        <div style="line-height:24px;">
+          <span style="font-size:22px;font-weight:700;color:#FFFFFF;letter-spacing:0.2px;vertical-align:middle;">TransUnion</span><span style="display:inline-block;margin-left:5px;width:20px;height:20px;line-height:20px;border:2px solid #7FD3E6;border-radius:50%;color:#7FD3E6;font-size:10px;font-weight:700;text-align:center;vertical-align:top;">tu</span>
+          <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7FD3E6;font-weight:700;margin-left:14px;vertical-align:middle;">AI Search &amp; GEO</span>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:320px;">
-          <span style="font-size:11px;font-weight:600;color:#0B2E4F;background:#E6F6FA;border-radius:999px;padding:5px 12px;">Scrunch · AI answers</span>
-          <span style="font-size:11px;font-weight:600;color:#0B2E4F;background:#E6F6FA;border-radius:999px;padding:5px 12px;">GA4 · AI referrals</span>
-          <span style="font-size:11px;font-weight:600;color:#FFFFFF;background:rgba(255,255,255,.18);border-radius:999px;padding:5px 12px;">vs PP = previous period</span>
-        </div>
+        <div style="width:44px;height:4px;background:#FFE600;border-radius:2px;margin:10px 0 8px 0;"></div>
+        <div style="font-size:24px;line-height:30px;font-weight:700;color:#FFFFFF;">Executive Summary</div>
+        <div style="font-size:13px;line-height:18px;color:#D6EEF5;margin:2px 0 10px 0;">TransUnion visibility in AI answers vs competitors, and the traffic it drives.</div>
+        <div><span style="display:inline-block;margin:0 6px 0 0;font-size:11px;font-weight:600;color:#0A4A6E;background:#E6F6FA;border-radius:999px;padding:4px 11px;">Scrunch · AI answers</span><span style="display:inline-block;margin:0 6px 0 0;font-size:11px;font-weight:600;color:#0A4A6E;background:#E6F6FA;border-radius:999px;padding:4px 11px;">GA4 · AI referrals</span><span style="display:inline-block;margin:0 6px 0 0;font-size:11px;font-weight:600;color:#0A4A6E;background:#FFE600;border-radius:999px;padding:4px 11px;">vs PP = previous period</span></div>
       </div> ;;
   }
-
   measure: header_traffic {
     label: "Header · AI Traffic"
     type: max
     sql: ${TABLE}.id ;;
     html:
-      <div style="width:100%;box-sizing:border-box;border-radius:18px;padding:20px 28px;background:linear-gradient(115deg,#071E36 0%,#0B2E4F 45%,#10A37F 100%);display:flex;align-items:center;gap:24px;text-align:left;font-family:Inter,Roboto,Arial,sans-serif;box-shadow:0 8px 24px rgba(11,46,79,.25);">
-        <img src="https://ml.globenewswire.com/Resource/Download/2b06d0f7-df02-4246-8367-417848756c77" style="height:58px;max-width:170px;object-fit:contain;border-radius:12px;background:#FFFFFF;padding:6px 12px;">
-        <div style="flex:1;">
-          <div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#9BE7CF;font-weight:700;">TransUnion · AI Search &amp; GEO</div>
-          <div style="font-size:28px;line-height:1.15;font-weight:700;color:#FFFFFF;margin-top:4px;">AI Traffic &amp; Conversions</div>
-          <div style="font-size:13px;color:#CFEAF2;margin-top:6px;">Who arrives from ChatGPT, Gemini, Copilot, Perplexity &amp; Claude, how deeply they engage, and what they convert into.</div>
+      <div style="width:100%;box-sizing:border-box;border-radius:16px;padding:18px 28px 16px 28px;background:linear-gradient(115deg,#033E5E 0%,#0A4A6E 45%,#00A6CA 100%);text-align:left;font-family:Roboto,Arial,sans-serif;">
+        <div style="line-height:24px;">
+          <span style="font-size:22px;font-weight:700;color:#FFFFFF;letter-spacing:0.2px;vertical-align:middle;">TransUnion</span><span style="display:inline-block;margin-left:5px;width:20px;height:20px;line-height:20px;border:2px solid #7FD3E6;border-radius:50%;color:#7FD3E6;font-size:10px;font-weight:700;text-align:center;vertical-align:top;">tu</span>
+          <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7FD3E6;font-weight:700;margin-left:14px;vertical-align:middle;">AI Search &amp; GEO</span>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:320px;">
-          <span style="font-size:11px;font-weight:600;color:#0B2E4F;background:#E7F8EF;border-radius:999px;padding:5px 12px;">GA4 · 3 sites + 5 products</span>
-          <span style="font-size:11px;font-weight:600;color:#FFFFFF;background:rgba(255,255,255,.18);border-radius:999px;padding:5px 12px;">Date · Engine · Market · Device</span>
-        </div>
+        <div style="width:44px;height:4px;background:#FFE600;border-radius:2px;margin:10px 0 8px 0;"></div>
+        <div style="font-size:24px;line-height:30px;font-weight:700;color:#FFFFFF;">AI Traffic &amp; Conversions</div>
+        <div style="font-size:13px;line-height:18px;color:#D6EEF5;margin:2px 0 10px 0;">Visits from ChatGPT, Gemini, Copilot, Perplexity &amp; Claude: engagement and conversions.</div>
+        <div><span style="display:inline-block;margin:0 6px 0 0;font-size:11px;font-weight:600;color:#0A4A6E;background:#E6F6FA;border-radius:999px;padding:4px 11px;">GA4 · 3 sites + 5 products</span><span style="display:inline-block;margin:0 6px 0 0;font-size:11px;font-weight:600;color:#FFFFFF;background:rgba(255,255,255,0.16);border-radius:999px;padding:4px 11px;">Date · Engine · Market · Device</span><span style="display:inline-block;margin:0 6px 0 0;font-size:11px;font-weight:600;color:#0A4A6E;background:#FFE600;border-radius:999px;padding:4px 11px;">vs PP = previous period</span></div>
       </div> ;;
   }
-
   measure: header_prompts {
     label: "Header · Prompts"
     type: max
     sql: ${TABLE}.id ;;
     html:
-      <div style="width:100%;box-sizing:border-box;border-radius:18px;padding:20px 28px;background:linear-gradient(115deg,#071E36 0%,#2A1B5C 50%,#7B3F98 100%);display:flex;align-items:center;gap:24px;text-align:left;font-family:Inter,Roboto,Arial,sans-serif;box-shadow:0 8px 24px rgba(11,46,79,.25);">
-        <img src="https://ml.globenewswire.com/Resource/Download/2b06d0f7-df02-4246-8367-417848756c77" style="height:58px;max-width:170px;object-fit:contain;border-radius:12px;background:#FFFFFF;padding:6px 12px;">
-        <div style="flex:1;">
-          <div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#D9C2F0;font-weight:700;">TransUnion · AI Search &amp; GEO</div>
-          <div style="font-size:28px;line-height:1.15;font-weight:700;color:#FFFFFF;margin-top:4px;">Prompt &amp; Persona Intelligence</div>
-          <div style="font-size:13px;color:#E6DAF5;margin-top:6px;">What consumers ask AI engines, which persona asks it, and how each engine describes TransUnion.</div>
+      <div style="width:100%;box-sizing:border-box;border-radius:16px;padding:18px 28px 16px 28px;background:linear-gradient(115deg,#033E5E 0%,#0A4A6E 45%,#00A6CA 100%);text-align:left;font-family:Roboto,Arial,sans-serif;">
+        <div style="line-height:24px;">
+          <span style="font-size:22px;font-weight:700;color:#FFFFFF;letter-spacing:0.2px;vertical-align:middle;">TransUnion</span><span style="display:inline-block;margin-left:5px;width:20px;height:20px;line-height:20px;border:2px solid #7FD3E6;border-radius:50%;color:#7FD3E6;font-size:10px;font-weight:700;text-align:center;vertical-align:top;">tu</span>
+          <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7FD3E6;font-weight:700;margin-left:14px;vertical-align:middle;">AI Search &amp; GEO</span>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:320px;">
-          <span style="font-size:11px;font-weight:600;color:#067647;background:#E7F8EF;border-radius:999px;padding:5px 12px;">● Cited</span>
-          <span style="font-size:11px;font-weight:600;color:#B54708;background:#FEF6E7;border-radius:999px;padding:5px 12px;">● Mentioned</span>
-          <span style="font-size:11px;font-weight:600;color:#B42318;background:#FEECEB;border-radius:999px;padding:5px 12px;">● Missing</span>
-        </div>
+        <div style="width:44px;height:4px;background:#FFE600;border-radius:2px;margin:10px 0 8px 0;"></div>
+        <div style="font-size:24px;line-height:30px;font-weight:700;color:#FFFFFF;">Prompt &amp; Persona Intelligence</div>
+        <div style="font-size:13px;line-height:18px;color:#D6EEF5;margin:2px 0 10px 0;">What consumers ask AI engines, and how each engine describes TransUnion.</div>
+        <div><span style="display:inline-block;margin:0 6px 0 0;font-size:11px;font-weight:600;color:#067647;background:#E7F8EF;border-radius:999px;padding:4px 11px;">● Cited</span><span style="display:inline-block;margin:0 6px 0 0;font-size:11px;font-weight:600;color:#B54708;background:#FEF6E7;border-radius:999px;padding:4px 11px;">● Mentioned</span><span style="display:inline-block;margin:0 6px 0 0;font-size:11px;font-weight:600;color:#B42318;background:#FEECEB;border-radius:999px;padding:4px 11px;">● Missing</span></div>
       </div> ;;
   }
 }
