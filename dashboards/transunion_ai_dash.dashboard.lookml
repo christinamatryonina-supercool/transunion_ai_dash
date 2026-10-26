@@ -118,16 +118,14 @@
     explore: scrunch_brands
     type: single_value
     fields:
-    - scrunch_brand.tu_share_of_voice
+    - scrunch_brand.kpi_tu_share_of_voice
     - scrunch_brand.tu_share_of_voice_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - scrunch_brand.tu_share_of_voice_pp
     note_state: collapsed
     note_display: hover
     note_text: TU mentions / all brands' mentions in AI answers
@@ -147,16 +145,14 @@
     explore: scrunch_responses
     type: single_value
     fields:
-    - scrunch_response.brand_mentions
+    - scrunch_response.kpi_brand_mentions
     - scrunch_response.brand_mentions_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - scrunch_response.brand_mentions_pp
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
@@ -173,16 +169,14 @@
     explore: scrunch_responses
     type: single_value
     fields:
-    - scrunch_response.cited_responses
+    - scrunch_response.kpi_cited_responses
     - scrunch_response.cited_responses_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - scrunch_response.cited_responses_pp
     note_state: collapsed
     note_display: hover
     note_text: AI answers linking to transunion.com
@@ -202,16 +196,14 @@
     explore: scrunch_responses
     type: single_value
     fields:
-    - scrunch_response.first_mention_rate
+    - scrunch_response.kpi_first_mention_rate
     - scrunch_response.first_mention_rate_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - scrunch_response.first_mention_rate_pp
     note_state: collapsed
     note_display: hover
     note_text: TU mentions in the top part of the answer
@@ -231,16 +223,14 @@
     explore: scrunch_responses
     type: single_value
     fields:
-    - scrunch_response.net_sentiment
+    - scrunch_response.kpi_net_sentiment
     - scrunch_response.net_sentiment_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - scrunch_response.net_sentiment_pp
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
@@ -258,16 +248,14 @@
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.ai_sessions
+    - ga4_daily.kpi_ai_sessions
     - ga4_daily.ai_sessions_pp
     custom_color_enabled: true
-    custom_color: '#00A6CA'
+    custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.ai_sessions_pp
     note_state: collapsed
     note_display: hover
     note_text: GA4 sessions from all AI sources
@@ -286,16 +274,14 @@
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.ai_share
+    - ga4_daily.kpi_ai_share
     - ga4_daily.ai_share_pp
     custom_color_enabled: true
-    custom_color: '#00A6CA'
+    custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.ai_share_pp
     note_state: collapsed
     note_display: hover
     note_text: AI sessions / all sessions (ignores the AI Engine filter)
@@ -306,23 +292,21 @@
     row: 8
     col: 0
     width: 6
-    height: 3
+    height: 4
   - name: exec_kpi_ai_signups
     title: AI Signups
     model: transunion_ai
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.signups
+    - ga4_daily.kpi_signups
     - ga4_daily.signups_pp
     custom_color_enabled: true
-    custom_color: '#00A6CA'
+    custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.signups_pp
     filters: &id002
       ga4_daily.is_ai_referral: 'Yes'
     listen:
@@ -333,23 +317,21 @@
     row: 8
     col: 6
     width: 6
-    height: 3
+    height: 4
   - name: exec_kpi_ai_conv
     title: AI Signup Rate
     model: transunion_ai
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.signup_session_rate
+    - ga4_daily.kpi_signup_session_rate
     - ga4_daily.signup_session_rate_pp
     custom_color_enabled: true
-    custom_color: '#00A6CA'
+    custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.signup_session_rate_pp
     filters: *id002
     note_state: collapsed
     note_display: hover
@@ -362,23 +344,21 @@
     row: 8
     col: 12
     width: 6
-    height: 3
+    height: 4
   - name: exec_kpi_ai_revenue
     title: AI Revenue
     model: transunion_ai
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.purchase_revenue
+    - ga4_daily.kpi_purchase_revenue
     - ga4_daily.purchase_revenue_pp
     custom_color_enabled: true
-    custom_color: '#00A6CA'
+    custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.purchase_revenue_pp
     filters: *id002
     listen:
       Date Range: ga4_daily.period
@@ -388,7 +368,7 @@
     row: 8
     col: 18
     width: 6
-    height: 3
+    height: 4
   - name: exec_sov_trend
     title: Share of Voice · Daily
     model: transunion_ai
@@ -434,7 +414,7 @@
       Persona (Scrunch): scrunch_brand.persona_name
       Topic (Scrunch): scrunch_brand.primary_topic
     tab_name: Executive Summary
-    row: 15
+    row: 16
     col: 0
     width: 16
     height: 8
@@ -481,7 +461,7 @@
       Persona (Scrunch): scrunch_brand.persona_name
       Topic (Scrunch): scrunch_brand.primary_topic
     tab_name: Executive Summary
-    row: 15
+    row: 16
     col: 16
     width: 8
     height: 8
@@ -514,7 +494,7 @@
       Persona (Scrunch): scrunch_citation.persona_name
       Topic (Scrunch): scrunch_citation.primary_topic
     tab_name: Executive Summary
-    row: 23
+    row: 24
     col: 0
     width: 14
     height: 8
@@ -546,7 +526,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
-    row: 23
+    row: 24
     col: 14
     width: 10
     height: 8
@@ -555,7 +535,7 @@
     title_text: ''
     body_text: '<sub>**vs PP** = change vs previous period of the same length · Brand = named in the AI answer, Citation = linked source · First-Mention = top part of the answer · AI sessions are a floor: Google AI Overviews / AI Mode arrive as google / organic</sub>'
     tab_name: Executive Summary
-    row: 31
+    row: 32
     col: 0
     width: 24
     height: 2
@@ -580,16 +560,14 @@
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.ai_sessions
+    - ga4_daily.kpi_ai_sessions
     - ga4_daily.ai_sessions_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.ai_sessions_pp
     listen:
       Date Range: ga4_daily.period
       AI Engine: ga4_daily.ai_platform
@@ -605,16 +583,14 @@
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.ai_share
+    - ga4_daily.kpi_ai_share
     - ga4_daily.ai_share_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.ai_share_pp
     note_state: collapsed
     note_display: hover
     note_text: AI sessions / all sessions (ignores the AI Engine filter)
@@ -632,16 +608,14 @@
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.engagement_rate
+    - ga4_daily.kpi_engagement_rate
     - ga4_daily.engagement_rate_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.engagement_rate_pp
     filters: *id002
     listen:
       Date Range: ga4_daily.period
@@ -658,16 +632,14 @@
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.avg_session_duration
+    - ga4_daily.kpi_avg_session_duration
     - ga4_daily.avg_session_duration_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.avg_session_duration_pp
     filters: *id002
     listen:
       Date Range: ga4_daily.period
@@ -684,16 +656,14 @@
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.signups
+    - ga4_daily.kpi_signups
     - ga4_daily.signups_pp
     custom_color_enabled: true
-    custom_color: '#00A6CA'
+    custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.signups_pp
     filters: *id002
     listen:
       Date Range: ga4_daily.period
@@ -710,16 +680,14 @@
     explore: ga4_ai_traffic
     type: single_value
     fields:
-    - ga4_daily.purchase_revenue
+    - ga4_daily.kpi_purchase_revenue
     - ga4_daily.purchase_revenue_pp
     custom_color_enabled: true
-    custom_color: '#00A6CA'
+    custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - ga4_daily.purchase_revenue_pp
     filters: *id002
     listen:
       Date Range: ga4_daily.period
@@ -757,13 +725,17 @@
     series_colors:
       ChatGPT - ga4_daily.sessions: '#10A37F'
       Gemini - ga4_daily.sessions: '#4285F4'
-      Copilot - ga4_daily.sessions: '#0078D4'
-      Perplexity - ga4_daily.sessions: '#1FB8CD'
-      Claude - ga4_daily.sessions: '#D97757'
-      Meta AI - ga4_daily.sessions: '#0866FF'
-      Grok - ga4_daily.sessions: '#1D1D1F'
-      DeepSeek - ga4_daily.sessions: '#4D6BFE'
-      Other AI Assistant - ga4_daily.sessions: '#98A2B3'
+      Perplexity - ga4_daily.sessions: '#F59E0B'
+      Copilot - ga4_daily.sessions: '#8B5CF6'
+      Meta AI - ga4_daily.sessions: '#EC4899'
+      Other AI Assistant - ga4_daily.sessions: '#94A3B8'
+      Claude - ga4_daily.sessions: '#E4572E'
+      DuckDuckGo AI - ga4_daily.sessions: '#84CC16'
+      Doubao - ga4_daily.sessions: '#A16207'
+      Baidu ERNIE - ga4_daily.sessions: '#475569'
+      Grok - ga4_daily.sessions: '#111827'
+      DeepSeek - ga4_daily.sessions: '#0EA5E9'
+      Mistral Le Chat - ga4_daily.sessions: '#F97316'
     listen:
       Date Range: ga4_daily.period
       AI Engine: ga4_daily.ai_platform
@@ -804,7 +776,7 @@
       valueFormat: 0%
     series_colors:
       ga4_daily.sessions: '#00A6CA'
-      ga4_daily.engagement_rate: '#0B2E4F'
+      ga4_daily.engagement_rate: '#F5B800'
     x_axis_gridlines: false
     y_axis_gridlines: false
     legend_position: center
@@ -1015,7 +987,7 @@
       ga4_daily.ai_share: scatter
     series_colors:
       ga4_daily.ai_sessions: '#00A6CA'
-      ga4_daily.ai_share: '#0B2E4F'
+      ga4_daily.ai_share: '#F5B800'
     show_value_labels: true
     x_axis_gridlines: false
     y_axis_gridlines: false
@@ -1062,10 +1034,14 @@
     explore: scrunch_responses
     type: single_value
     fields:
-    - scrunch_response.prompts_tracked
+    - scrunch_response.kpi_prompts_tracked
+    - scrunch_response.prompts_tracked_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
+    show_comparison: false
+    hidden_fields:
+    - scrunch_response.prompts_tracked_pp
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
@@ -1075,17 +1051,21 @@
     row: 4
     col: 0
     width: 6
-    height: 3
+    height: 4
   - name: prompts_kpi_mention
     title: Mention Rate
     model: transunion_ai
     explore: scrunch_responses
     type: single_value
     fields:
-    - scrunch_response.mention_rate
+    - scrunch_response.kpi_mention_rate
+    - scrunch_response.mention_rate_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
+    show_comparison: false
+    hidden_fields:
+    - scrunch_response.mention_rate_pp
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
@@ -1095,17 +1075,21 @@
     row: 4
     col: 6
     width: 6
-    height: 3
+    height: 4
   - name: prompts_kpi_citation
     title: Citation Rate
     model: transunion_ai
     explore: scrunch_responses
     type: single_value
     fields:
-    - scrunch_response.citation_rate
+    - scrunch_response.kpi_citation_rate
+    - scrunch_response.citation_rate_pp
     custom_color_enabled: true
     custom_color: '#0B2E4F'
     show_single_value_title: true
+    show_comparison: false
+    hidden_fields:
+    - scrunch_response.citation_rate_pp
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
@@ -1115,23 +1099,21 @@
     row: 4
     col: 12
     width: 6
-    height: 3
+    height: 4
   - name: prompts_kpi_sentiment
     title: Net Sentiment
     model: transunion_ai
     explore: scrunch_responses
     type: single_value
     fields:
-    - scrunch_response.net_sentiment
+    - scrunch_response.kpi_net_sentiment
     - scrunch_response.net_sentiment_pp
     custom_color_enabled: true
-    custom_color: '#00A6CA'
+    custom_color: '#0B2E4F'
     show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    comparison_label: vs PP
+    show_comparison: false
+    hidden_fields:
+    - scrunch_response.net_sentiment_pp
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
@@ -1142,7 +1124,7 @@
     row: 4
     col: 18
     width: 6
-    height: 3
+    height: 4
   - name: prompts_matrix
     title: Core Prompt Tracking Matrix
     model: transunion_ai
@@ -1179,7 +1161,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
-    row: 7
+    row: 8
     col: 0
     width: 24
     height: 10
@@ -1228,7 +1210,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
-    row: 17
+    row: 18
     col: 0
     width: 16
     height: 9
@@ -1251,14 +1233,14 @@
     legend_position: center
     series_colors:
       scrunch_response.mention_rate: '#00A6CA'
-      scrunch_response.citation_rate: '#0B2E4F'
+      scrunch_response.citation_rate: '#F5B800'
     listen:
       Date Range: scrunch_response.period
       AI Engine: scrunch_response.ai_platform
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Prompt & Persona Intelligence
-    row: 17
+    row: 18
     col: 16
     width: 8
     height: 9
@@ -1267,7 +1249,7 @@
     title_text: ''
     body_text: <sub>**Cited** = transunion.com linked as a source · **Mentioned** = named in the answer · **Missing** = neither · Winner domain = most-linked domain per answer</sub>
     tab_name: Prompt & Persona Intelligence
-    row: 26
+    row: 27
     col: 0
     width: 24
     height: 2
@@ -1291,8 +1273,16 @@
     y_axis_gridlines: false
     show_x_axis_label: false
     show_y_axis_labels: false
-    show_y_axis_ticks: false
+    show_y_axis_ticks: true
     legend_position: none
+    y_axes:
+    - label: ''
+      orientation: left
+      showLabels: false
+      showValues: true
+      valueFormat: 0%
+      tickDensity: default
+      type: linear
     series_colors:
       scrunch_response.mention_rate: '#00A6CA'
     listen:
@@ -1301,7 +1291,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
-    row: 11
+    row: 12
     col: 0
     width: 12
     height: 4
@@ -1325,16 +1315,24 @@
     y_axis_gridlines: false
     show_x_axis_label: false
     show_y_axis_labels: false
-    show_y_axis_ticks: false
+    show_y_axis_ticks: true
     legend_position: none
+    y_axes:
+    - label: ''
+      orientation: left
+      showLabels: false
+      showValues: true
+      valueFormat: '#,##0'
+      tickDensity: default
+      type: linear
     series_colors:
-      ga4_daily.ai_sessions: '#0B2E4F'
+      ga4_daily.ai_sessions: '#F5B800'
     listen:
       Date Range: ga4_daily.period
       AI Engine: ga4_daily.ai_platform
       Device (GA4): ga4_daily.device_category
     tab_name: Executive Summary
-    row: 11
+    row: 12
     col: 12
     width: 12
     height: 4
