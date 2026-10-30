@@ -191,7 +191,7 @@
     width: 4
     height: 4
   - name: exec_kpi_first
-    title: First-Mention Rate
+    title: Top-Mention Rate
     model: transunion_ai
     explore: scrunch_responses
     type: single_value
