@@ -278,8 +278,7 @@ view: scrunch_response {
 
   dimension: report_period_start {
     hidden: yes
-    type: date
-    convert_tz: no
+    # no type: date on purpose - referenced as a real DATE in report_period / is_partial_period
     sql: {% if granularity._parameter_value == 'week' %} DATEADD(day, 1 - DAYOFWEEKISO(${TABLE}.REPORT_DATE), ${TABLE}.REPORT_DATE)
          {% elsif granularity._parameter_value == 'month' %} DATE_TRUNC('month', ${TABLE}.REPORT_DATE)
          {% else %} ${TABLE}.REPORT_DATE {% endif %} ;;
@@ -287,8 +286,7 @@ view: scrunch_response {
 
   dimension: report_period_end {
     hidden: yes
-    type: date
-    convert_tz: no
+    # no type: date on purpose (see report_period_start)
     sql: {% if granularity._parameter_value == 'week' %} DATEADD(day, 7 - DAYOFWEEKISO(${TABLE}.REPORT_DATE), ${TABLE}.REPORT_DATE)
          {% elsif granularity._parameter_value == 'month' %} LAST_DAY(${TABLE}.REPORT_DATE)
          {% else %} ${TABLE}.REPORT_DATE {% endif %} ;;
