@@ -30,6 +30,18 @@
     model: transunion_ai
     explore: scrunch_responses
     field: scrunch_response.period
+  - name: Granularity
+    title: Granularity
+    type: field_filter
+    default_value: day
+    allow_multiple_values: false
+    required: true
+    ui_config:
+      type: button_toggles
+      display: inline
+    model: transunion_ai
+    explore: ui_banner
+    field: ui_banner.granularity
   - name: AI Engine
     title: AI Engine
     type: field_filter
@@ -191,7 +203,7 @@
     width: 4
     height: 4
   - name: exec_kpi_first
-    title: Top-Mention Rate
+    title: First-Mention Rate
     model: transunion_ai
     explore: scrunch_responses
     type: single_value
@@ -375,18 +387,16 @@
     explore: scrunch_brands
     type: looker_line
     fields:
-    - scrunch_brand.report_date
+    - scrunch_brand.report_period
     - scrunch_brand.brand_name
     - scrunch_brand.mentions
     show_view_names: false
     pivots:
     - scrunch_brand.brand_name
-    fill_fields:
-    - scrunch_brand.report_date
     filters:
       scrunch_brand.period_type: CP
     sorts:
-    - scrunch_brand.report_date
+    - scrunch_brand.report_period
     dynamic_fields:
     - category: table_calculation
       expression: ${scrunch_brand.mentions} / sum(pivot_row(${scrunch_brand.mentions}))
@@ -413,11 +423,13 @@
       AI Engine: scrunch_brand.ai_platform
       Persona (Scrunch): scrunch_brand.persona_name
       Topic (Scrunch): scrunch_brand.primary_topic
+      Granularity: scrunch_brand.granularity
     tab_name: Executive Summary
-    row: 16
+    row: 17
     col: 0
     width: 16
-    height: 8
+    height: 7
+    title_hidden: true
   - name: exec_sov_table
     title: Market Share Breakdown
     model: transunion_ai
@@ -704,19 +716,17 @@
     explore: ga4_ai_traffic
     type: looker_area
     fields:
-    - ga4_daily.report_date
+    - ga4_daily.report_period
     - ga4_daily.ai_platform
     - ga4_daily.sessions
     show_view_names: false
     pivots:
     - ga4_daily.ai_platform
-    fill_fields:
-    - ga4_daily.report_date
     filters:
       ga4_daily.is_ai_referral: 'Yes'
       ga4_daily.period_type: CP
     sorts:
-    - ga4_daily.report_date
+    - ga4_daily.report_period
     stacking: normal
     interpolation: monotone
     x_axis_gridlines: false
@@ -740,11 +750,13 @@
       Date Range: ga4_daily.period
       AI Engine: ga4_daily.ai_platform
       Device (GA4): ga4_daily.device_category
+      Granularity: ga4_daily.granularity
     tab_name: AI Traffic & Conversions
-    row: 8
+    row: 9
     col: 0
     width: 24
-    height: 8
+    height: 7
+    title_hidden: true
   - name: traffic_volume_quality
     title: Volume vs Quality by AI Engine
     model: transunion_ai
@@ -1259,15 +1271,13 @@
     explore: scrunch_responses
     type: looker_area
     fields:
-    - scrunch_response.report_date
+    - scrunch_response.report_period
     - scrunch_response.mention_rate
     show_view_names: false
-    fill_fields:
-    - scrunch_response.report_date
     filters:
       scrunch_response.period_type: CP
     sorts:
-    - scrunch_response.report_date
+    - scrunch_response.report_period
     interpolation: monotone
     x_axis_gridlines: false
     y_axis_gridlines: false
@@ -1290,26 +1300,26 @@
       AI Engine: scrunch_response.ai_platform
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
+      Granularity: scrunch_response.granularity
     tab_name: Executive Summary
-    row: 12
+    row: 13
     col: 0
     width: 12
-    height: 4
+    height: 3
+    title_hidden: true
   - name: exec_pulse_ai
     title: AI Sessions · daily
     model: transunion_ai
     explore: ga4_ai_traffic
     type: looker_area
     fields:
-    - ga4_daily.report_date
+    - ga4_daily.report_period
     - ga4_daily.ai_sessions
     show_view_names: false
-    fill_fields:
-    - ga4_daily.report_date
     filters:
       ga4_daily.period_type: CP
     sorts:
-    - ga4_daily.report_date
+    - ga4_daily.report_period
     interpolation: monotone
     x_axis_gridlines: false
     y_axis_gridlines: false
@@ -1331,8 +1341,74 @@
       Date Range: ga4_daily.period
       AI Engine: ga4_daily.ai_platform
       Device (GA4): ga4_daily.device_category
+      Granularity: ga4_daily.granularity
+    tab_name: Executive Summary
+    row: 13
+    col: 12
+    width: 12
+    height: 3
+    title_hidden: true
+  - name: exec_sov_trend_title
+    title: ''
+    model: transunion_ai
+    explore: ui_banner
+    type: single_value
+    fields:
+    - ui_banner.title_sov
+    show_single_value_title: false
+    show_comparison: false
+    listen:
+      Granularity: ui_banner.granularity
+    tab_name: Executive Summary
+    row: 16
+    col: 0
+    width: 16
+    height: 1
+  - name: traffic_trend_title
+    title: ''
+    model: transunion_ai
+    explore: ui_banner
+    type: single_value
+    fields:
+    - ui_banner.title_ai_by_engine
+    show_single_value_title: false
+    show_comparison: false
+    listen:
+      Granularity: ui_banner.granularity
+    tab_name: AI Traffic & Conversions
+    row: 8
+    col: 0
+    width: 24
+    height: 1
+  - name: exec_pulse_mentions_title
+    title: ''
+    model: transunion_ai
+    explore: ui_banner
+    type: single_value
+    fields:
+    - ui_banner.title_mention_rate
+    show_single_value_title: false
+    show_comparison: false
+    listen:
+      Granularity: ui_banner.granularity
+    tab_name: Executive Summary
+    row: 12
+    col: 0
+    width: 12
+    height: 1
+  - name: exec_pulse_ai_title
+    title: ''
+    model: transunion_ai
+    explore: ui_banner
+    type: single_value
+    fields:
+    - ui_banner.title_ai_sessions
+    show_single_value_title: false
+    show_comparison: false
+    listen:
+      Granularity: ui_banner.granularity
     tab_name: Executive Summary
     row: 12
     col: 12
     width: 12
-    height: 4
+    height: 1

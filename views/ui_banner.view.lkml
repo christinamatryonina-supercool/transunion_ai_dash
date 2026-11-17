@@ -60,4 +60,39 @@ view: ui_banner {
         <div style="font-size:12px;line-height:18px;font-weight:600;margin-top:6px;"><span style="color:#6CE9A6;">● Cited</span>&nbsp;&nbsp;&nbsp;<span style="color:#FEC84B;">● Mentioned</span>&nbsp;&nbsp;&nbsp;<span style="color:#FDA29B;">● Missing</span></div>
       </div> ;;
   }
+
+  # ---------------- Dynamic chart titles (follow the Granularity control) ----------------
+  parameter: granularity {
+    label: "Granularity"
+    type: unquoted
+    allowed_value: { label: "Daily"   value: "day" }
+    allowed_value: { label: "Weekly"  value: "week" }
+    allowed_value: { label: "Monthly" value: "month" }
+    default_value: "day"
+  }
+
+  measure: title_mention_rate {
+    hidden: yes
+    type: max
+    sql: ${TABLE}.id ;;
+    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">TU Mention Rate · {% if granularity._parameter_value == 'week' %}Weekly{% elsif granularity._parameter_value == 'month' %}Monthly{% else %}Daily{% endif %}</div> ;;
+  }
+  measure: title_ai_sessions {
+    hidden: yes
+    type: max
+    sql: ${TABLE}.id ;;
+    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">AI Sessions · {% if granularity._parameter_value == 'week' %}Weekly{% elsif granularity._parameter_value == 'month' %}Monthly{% else %}Daily{% endif %}</div> ;;
+  }
+  measure: title_sov {
+    hidden: yes
+    type: max
+    sql: ${TABLE}.id ;;
+    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">Share of Voice · {% if granularity._parameter_value == 'week' %}Weekly{% elsif granularity._parameter_value == 'month' %}Monthly{% else %}Daily{% endif %}</div> ;;
+  }
+  measure: title_ai_by_engine {
+    hidden: yes
+    type: max
+    sql: ${TABLE}.id ;;
+    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">AI Sessions by Engine · {% if granularity._parameter_value == 'week' %}Weekly{% elsif granularity._parameter_value == 'month' %}Monthly{% else %}Daily{% endif %}</div> ;;
+  }
 }
