@@ -304,6 +304,14 @@ view: scrunch_response {
          {% endif %} ;;
   }
 
+  dimension: report_period_date {
+    label_from_parameter: granularity
+    description: "Chart axis: day, ISO week start (Mon) or month start, following the Granularity control"
+    type: date
+    convert_tz: no
+    sql: ${report_period_start} ;;
+  }
+
   dimension: report_period {
     label_from_parameter: granularity
     description: "Report date grouped by the Granularity control; partial weeks/months are labelled"

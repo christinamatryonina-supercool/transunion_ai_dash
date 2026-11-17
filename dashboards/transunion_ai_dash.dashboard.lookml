@@ -387,7 +387,7 @@
     explore: scrunch_brands
     type: looker_line
     fields:
-    - scrunch_brand.report_period
+    - scrunch_brand.report_period_date
     - scrunch_brand.brand_name
     - scrunch_brand.mentions
     show_view_names: false
@@ -396,7 +396,7 @@
     filters:
       scrunch_brand.period_type: CP
     sorts:
-    - scrunch_brand.report_period
+    - scrunch_brand.report_period_date
     dynamic_fields:
     - category: table_calculation
       expression: ${scrunch_brand.mentions} / sum(pivot_row(${scrunch_brand.mentions}))
@@ -425,7 +425,7 @@
       Topic (Scrunch): scrunch_brand.primary_topic
       Granularity: scrunch_brand.granularity
     tab_name: Executive Summary
-    row: 17
+    row: 18
     col: 0
     width: 16
     height: 7
@@ -473,7 +473,7 @@
       Persona (Scrunch): scrunch_brand.persona_name
       Topic (Scrunch): scrunch_brand.primary_topic
     tab_name: Executive Summary
-    row: 16
+    row: 17
     col: 16
     width: 8
     height: 8
@@ -506,7 +506,7 @@
       Persona (Scrunch): scrunch_citation.persona_name
       Topic (Scrunch): scrunch_citation.primary_topic
     tab_name: Executive Summary
-    row: 24
+    row: 25
     col: 0
     width: 14
     height: 8
@@ -538,7 +538,7 @@
       Persona (Scrunch): scrunch_response.persona_name
       Topic (Scrunch): scrunch_response.primary_topic
     tab_name: Executive Summary
-    row: 24
+    row: 25
     col: 14
     width: 10
     height: 8
@@ -547,7 +547,7 @@
     title_text: ''
     body_text: '<sub>**vs PP** = change vs previous period of the same length · Brand = named in the AI answer, Citation = linked source · First-Mention = top part of the answer · AI sessions are a floor: Google AI Overviews / AI Mode arrive as google / organic</sub>'
     tab_name: Executive Summary
-    row: 32
+    row: 33
     col: 0
     width: 24
     height: 2
@@ -716,7 +716,7 @@
     explore: ga4_ai_traffic
     type: looker_area
     fields:
-    - ga4_daily.report_period
+    - ga4_daily.report_period_date
     - ga4_daily.ai_platform
     - ga4_daily.sessions
     show_view_names: false
@@ -726,7 +726,7 @@
       ga4_daily.is_ai_referral: 'Yes'
       ga4_daily.period_type: CP
     sorts:
-    - ga4_daily.report_period
+    - ga4_daily.report_period_date
     stacking: normal
     interpolation: monotone
     x_axis_gridlines: false
@@ -1271,13 +1271,13 @@
     explore: scrunch_responses
     type: looker_area
     fields:
-    - scrunch_response.report_period
+    - scrunch_response.report_period_date
     - scrunch_response.mention_rate
     show_view_names: false
     filters:
       scrunch_response.period_type: CP
     sorts:
-    - scrunch_response.report_period
+    - scrunch_response.report_period_date
     interpolation: monotone
     x_axis_gridlines: false
     y_axis_gridlines: false
@@ -1305,7 +1305,7 @@
     row: 13
     col: 0
     width: 12
-    height: 3
+    height: 4
     title_hidden: true
   - name: exec_pulse_ai
     title: AI Sessions · daily
@@ -1313,13 +1313,13 @@
     explore: ga4_ai_traffic
     type: looker_area
     fields:
-    - ga4_daily.report_period
+    - ga4_daily.report_period_date
     - ga4_daily.ai_sessions
     show_view_names: false
     filters:
       ga4_daily.period_type: CP
     sorts:
-    - ga4_daily.report_period
+    - ga4_daily.report_period_date
     interpolation: monotone
     x_axis_gridlines: false
     y_axis_gridlines: false
@@ -1346,7 +1346,7 @@
     row: 13
     col: 12
     width: 12
-    height: 3
+    height: 4
     title_hidden: true
   - name: exec_sov_trend_title
     title: ''
@@ -1360,7 +1360,7 @@
     listen:
       Granularity: ui_banner.granularity
     tab_name: Executive Summary
-    row: 16
+    row: 17
     col: 0
     width: 16
     height: 1

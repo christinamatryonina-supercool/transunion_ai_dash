@@ -75,24 +75,24 @@ view: ui_banner {
     hidden: yes
     type: max
     sql: ${TABLE}.id ;;
-    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">TU Mention Rate · {% if granularity._parameter_value == 'week' %}Weekly{% elsif granularity._parameter_value == 'month' %}Monthly{% else %}Daily{% endif %}</div> ;;
+    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">TU Mention Rate · {% if granularity._parameter_value == 'week' %}Weekly<span style="font-size:11px;font-weight:400;color:#98A2B3;">&nbsp;&nbsp;first/last week may be partial</span>{% elsif granularity._parameter_value == 'month' %}Monthly<span style="font-size:11px;font-weight:400;color:#98A2B3;">&nbsp;&nbsp;first/last month may be partial</span>{% else %}Daily{% endif %}</div> ;;
   }
   measure: title_ai_sessions {
     hidden: yes
     type: max
     sql: ${TABLE}.id ;;
-    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">AI Sessions · {% if granularity._parameter_value == 'week' %}Weekly{% elsif granularity._parameter_value == 'month' %}Monthly{% else %}Daily{% endif %}</div> ;;
+    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">AI Sessions · {% if granularity._parameter_value == 'week' %}Weekly<span style="font-size:11px;font-weight:400;color:#98A2B3;">&nbsp;&nbsp;first/last week may be partial</span>{% elsif granularity._parameter_value == 'month' %}Monthly<span style="font-size:11px;font-weight:400;color:#98A2B3;">&nbsp;&nbsp;first/last month may be partial</span>{% else %}Daily{% endif %}</div> ;;
   }
   measure: title_sov {
     hidden: yes
     type: max
     sql: ${TABLE}.id ;;
-    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">Share of Voice · {% if granularity._parameter_value == 'week' %}Weekly{% elsif granularity._parameter_value == 'month' %}Monthly{% else %}Daily{% endif %}</div> ;;
+    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">Share of Voice · {% if granularity._parameter_value == 'week' %}Weekly<span style="font-size:11px;font-weight:400;color:#98A2B3;">&nbsp;&nbsp;first/last week may be partial</span>{% elsif granularity._parameter_value == 'month' %}Monthly<span style="font-size:11px;font-weight:400;color:#98A2B3;">&nbsp;&nbsp;first/last month may be partial</span>{% else %}Daily{% endif %}</div> ;;
   }
   measure: title_ai_by_engine {
     hidden: yes
     type: max
     sql: ${TABLE}.id ;;
-    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">AI Sessions by Engine · {% if granularity._parameter_value == 'week' %}Weekly{% elsif granularity._parameter_value == 'month' %}Monthly{% else %}Daily{% endif %}</div> ;;
+    html: <div style="text-align:center;font-size:15px;line-height:20px;font-weight:500;color:#1F2937;font-family:Roboto,Arial,sans-serif;">AI Sessions by Engine · {% if granularity._parameter_value == 'week' %}Weekly<span style="font-size:11px;font-weight:400;color:#98A2B3;">&nbsp;&nbsp;first/last week may be partial</span>{% elsif granularity._parameter_value == 'month' %}Monthly<span style="font-size:11px;font-weight:400;color:#98A2B3;">&nbsp;&nbsp;first/last month may be partial</span>{% else %}Daily{% endif %}</div> ;;
   }
 }
